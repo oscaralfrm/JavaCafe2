@@ -1,0 +1,461 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand';
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    height: 500px;
+    background: #bc4e9c;
+    background: -webkit-linear-gradient(to right, rgb(171, 154, 245), hsla(317, 45%, 52%, 0.664)), url(./Fondo-Nav.jpg);
+    background: linear-gradient(to right, rgb(171, 154, 245), hsla(317, 45%, 52%, 0.664)), url(./Fondo-Nav.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/*Barra menu*/
+
+.container_menu{
+    width: 100%; /*para que ocupe todo el ancho*/
+    height: 70px; /*altura da barra*/
+    padding: 0px 20px; /*separacion de los bordes*/
+    display: flex; /*para que se alineen los elementos*/
+    justify-content: space-between; /*para que se separen los elementos*/
+    align-items: center; /*para que se alineen los elementos*/
+    
+}
+
+.menu{
+    max-width: 1200px; /*para que no se salga de la pantalla*/
+    margin: auto; /*para que se centre*/
+    height: 100%; /*para que ocupe todo el alto*/
+    text-align: left;
+    padding: 30px 50px 0 0;
+}
+
+nav {
+    text-align: left;
+    height: 100%; /*para que ocupe todo el alto*/
+    
+}
+
+nav > ul{ /* > significa que solo va a afectar a los ul que esten dentro de nav */
+    display: flex; /* Para que se muestren en linea uno al lado del otro los li */
+    height: 100%; /*para que ocupe todo el alto*/
+}
+nav ul li{
+    list-style: none; /* Para quitar los puntos de los li */
+    height: 100%;
+    position: relative; /* Para que el submenu se posicione dentro del li */
+}
+
+/*nav > ul > li:first-child > a{ 
+    background-image: url(../Fotos/hogar.png);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center center;
+    padding: 20px 40px;
+}
+
+nav > ul > li:first-child:hover > a{ 
+    background-image: url(../Fotos/hogar.png);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center center;
+    padding: 20px 40px;
+}*/
+
+nav > ul > li> a{
+    width: 100%;
+    display: flex; /* Para que se muestre en linea en el li */
+    height: 100%;
+    align-items: center; /* Para que el texto se alinee al final */
+    line-height: 70px; /* Para que el texto se posicione en el centro del li */
+    padding: 0px 20px;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: all 300ms ease; /* Para que el color del texto se vaya cambiando de forma suave */
+}
+
+nav > ul > li > a:hover{
+    background:  hotpink;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+#selected{
+    background-color:  hotpink;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+/*submenu*/
+
+nav ul li ul{
+    width: 200px; /* Para que el submenu tenga el mismo ancho que el li */
+    background: #fff;
+    display: flex;
+    flex-direction: column; /* Para que los li se muestren uno debajo del otro */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Para que el submenu tenga una sombra */
+    top: 90px; /* Para que el submenu se posicione debajo del li */
+    left: -5px; /* Para que el submenu se posicione al lado del li */
+    padding: 14px 0px; /* Para que el submenu tenga un poco de espacio entre los li */
+    visibility: hidden; /* Para que el submenu no se muestre */
+    position: absolute; /* Para que el submenu se posicione dentro del li */
+    opacity: 0; /* Para que el submenu no se muestre */
+    z-index: 10; /* Para que el submenu se muestre por encima de todo */
+    transition: all 300ms ease; /* Para que el submenu se muestre de forma suave */
+
+}
+
+nav ul li:hover ul { /* Para que el submenu se muestre cuando se pase el mouse por encima del li */
+    visibility: visible; /* Para que el submenu se muestre */
+    opacity: 1; /* Para que el submenu se muestre */
+    top: 60px; /* Para que el submenu se posicione debajo del li */    
+}
+
+nav ul li ul:before {
+    content:'';
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #fff;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+}
+
+nav ul li ul li a{
+    display: block;
+    color: hotpink;
+    padding: 6px;
+    padding-left: 14px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 300ms ease; /* Para que el color del texto se vaya cambiando de forma suave */
+}
+
+nav ul li ul li a:hover{
+    background: hotpink;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    padding-left: 30px;
+    font-size: 14px;
+    
+}
+
+@media screen and (max-width: 768px){
+    .header_superior{
+        padding: 10px;
+    }
+    .logo{
+        width: 200px;
+    }
+    .search{
+        display: none;
+    }
+    .search input{
+        width: 100%;
+    }
+    .menu{
+        display: none;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background-color: hotpink;
+        position: fixed;
+        top: 158px;
+        left: 0px;
+        width: 100%;
+        height: 300px;
+        transition: all 300ms ease;
+        z-index: 100;
+        *opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+header .textos-header{
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.textos-header h1{
+    font-size: 80px;
+    color:#fff;
+    
+}
+
+.textos-header h2{
+    font-size: 30px;
+    font-weight: 300;
+    color:#fff;
+}
+
+.wave{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.titulo{
+    font-size: x-large;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: row;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.titulo{
+    color:#bc4e9c;
+
+}
+
+/*:root {
+    --colorTextos: #49454567;
+}*/
+
+/* ::before, /*signigica que afecta a todos los elementos
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}*/
+
+/*.body{
+    font-family: 'Quicksand';
+}*/
+
+/*body{
+    font-family: 'Raleway', sans-serif;
+    min-height: 600px;
+    padding: 80px 0;
+    background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+    background-color: #a3bded;
+    background-repeat: no-repeat;
+
+    display: flex;
+}*/
+
+
+
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main .formulario{
+    margin: auto;
+    width: 90%;
+    max-width: 900px; /* para que no se estire mucho */
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.472), rgba(255, 255, 255, 0.365));
+    /*  overflow: hidden; /* para que no se vea el contenido que se sale de la caja */
+    /*padding: .7em;/* para que no se vea el contenido que se sale de la caja */
+    border-radius: 1em;
+
+    display: flex; 
+    grid-auto-rows: max-content; /* para que el grid se adapte al contenido */
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); /* para que el grid se adapte al contenido */
+    gap: .6em; /* para que haya un espacio entre las cajas */
+
+    animation: mostrar 1.5s ease-in-out;
+}
+
+@keyframes mostrar {   /*para que el contenido se muestre de forma suave */
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.main__figure{
+    overflow: hidden;/*para que no se salga de la caja*/
+    border-radius: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    transition: all .3s ease-in-out;
+    background-color: #D798F8;
+    display: flex;
+    justify-content: center;
+}
+
+.main__img{
+    margin: center;
+    width: 80%;
+    max-width: 60vw;
+}
+
+.main__contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 3em;
+    text-align: center;
+}
+
+.main__form{  /* para que el formulario se muestre de forma suave */
+    display: grid; /* para que los elementos se posicionen en forma de cuadricula */
+    justify-items: center;
+    gap: 1.5em; /*para que haya un espacio entre los elementos*/
+}
+
+.warnings {
+    width: 200px;
+    text-align: center;
+    color:#B06AB3;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.main__input{
+    width: 80%;
+    max-width: 500px;
+    outline: none;
+    border: none;
+    padding: 1em;
+    font: inherit;
+    border-radius: .6em;
+}
+
+.main__input--send{
+    background-color: #910491;
+    color: #fff;
+    font-weight: 600;
+}
+
+.main__title{
+    margin-top: 2em;
+    font-size: 2.3rem;
+}
+
+.main__paragraph{
+    text-align: center;
+    margin-top: .3em 0;
+}
+
+
+.main__social{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-auto-columns: max-content;
+    gap: 1em;
+}
+
+.main__link{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: .6em 1.5em;
+}
+
+.main__link:hover{
+    background-color: #fff;
+}
+
+.main__icon{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+footer{
+    width: 100%;
+    height: 25vh;
+    margin-top: 20px;
+    padding: 20px;
+    background-image: url(https://img.freepik.com/premium-photo/top-view-cup-coffee-with-copy-space_23-2148336691.jpg);
+    background-size:100%;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 100% / 30% 30% 0 0;
+}
+
+.parrafo{
+    font-family:'Quicksand';
+    color:#fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 10px;
+    left: 10px;
+}
+
+.links{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+}
+
+
+/* Estilos para la imagen de portada de Contacto y el Cafecito que viene traído de la API: */
+
+.contenedor-cajas-contacto {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10em;
+}
+
+#imagen-a-mostrar {
+    border-radius: 10%;
+    margin-top: 1.5em;
+}
+
+#imagenes-api > h2 {
+    text-align: center;
+}
+
+
+/* Animación de Flip Horizontal para voltear las cartitas */
+.main__figure:hover {
+    cursor: pointer;
+    animation: flipHorizontal 1000ms linear;
+}
+
+
+#imagenes-api:hover {
+    cursor: pointer;
+    animation: flipHorizontal 1000ms linear;
+}
+
+
+@keyframes flipHorizontal {
+    50% {
+        transform: rotateY(180deg)
+    }
+    to {
+        transform: rotateY(360deg)
+    }
+}
